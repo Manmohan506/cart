@@ -1,34 +1,9 @@
 @Library('roboshop') _
 
-pipeline{
-
-    agent {
-        label 'NODEJS'
-    }
-
-    stages {
-         stage('Download Dependencies') {
-        steps {
-            sh '''
-            npm install
-        '''
-        }
-    }
-
-        stage('prepare Artifacts') {
-            steps {
-                sh '''
-                zip -r cart.zip *
-               '''
-            }
-
-        }
-        stage('upload Artifacts') {
-            steps {
-             script {
-                 nexus
-             }
-            }
-        }
-    }
-}
+roboshop (
+    COMPONENT                 : 'cart',
+    PROJECT_NAME              : "RoboShop",
+    SLAVE_LABEL               : "MASTER",
+    SKIP_NEXUS_UPLOAD         :  false,
+    APP_TYPE                  :  "NODEJS"
+) 
