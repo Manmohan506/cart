@@ -1,7 +1,7 @@
 @Library('Roboshop') _
 
 roboshop (
-        COMPONENT                 : 'cart',
+        COMPONENT                 : "cart",
         PROJECT_NAME              : "RoboShop",
         SLAVE_LABEL               : "node",
         SKIP_NEXUS_UPLOAD         :  false,
